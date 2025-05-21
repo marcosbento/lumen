@@ -1,0 +1,64 @@
+name: lumen
+
+services:
+
+  0dev:
+    build: ./0dev
+    image: marcosbento/lumen:0dev
+    profiles:
+      - development
+
+  arch-20250518:
+    build: ./arch-20250518
+    image: marcosbento/lumen:arch-20250518
+    profiles:
+      - development
+
+  debian-11.11:
+    build: ./debian-11.11
+    image: marcosbento/lumen:debian-11.11
+    profiles:
+      - development
+
+  debian-12.10:
+    build: ./debian-12.10
+    image: marcosbento/lumen:debian-12.10
+    profiles:
+      - development
+
+  fedora-37:
+    build: ./fedora-37
+    image: marcosbento/lumen:fedora-37
+    profiles:
+      - development
+
+  fedora-42:
+    build: ./fedora-42
+    image: marcosbento/lumen:fedora-42
+    profiles:
+      - development
+
+  rocky-8.6:
+    build: ./rocky-8.6
+    image: marcosbento/lumen:rocky-8.6
+    profiles:
+      - development
+  
+  rocky-9.3:
+    build: ./rocky-9.3
+    image: marcosbento/lumen:rocky-9.3
+    profiles:
+      - development
+
+  ubuntu-22.04:
+    build: ./ubuntu-22.04
+    image: marcosbento/lumen:ubuntu-22.04
+    profiles:
+      - development
+
+  ubuntu-24.04:
+    build: ./ubuntu-24.04
+    image: marcosbento/lumen:ubuntu-24.04
+    profiles:
+      - development
+      

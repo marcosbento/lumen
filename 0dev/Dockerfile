@@ -40,9 +40,11 @@ RUN apt-get update -y \
 
 # Install latest CMake, at this time
 
-COPY scripts/pkg_cmake.sh /opt/pkg_cmake.sh
-RUN cd /opt \
-        && ./pkg_cmake.sh
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
 
 # Set up a non-root user
 ARG USER=devuser

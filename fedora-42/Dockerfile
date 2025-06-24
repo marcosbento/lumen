@@ -52,6 +52,12 @@ RUN dnf update -y \
         && \
     dnf clean all
 
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
+
 # Set up a non-root user
 ARG USER=devuser
 ARG UID=1000

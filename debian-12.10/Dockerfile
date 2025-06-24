@@ -35,6 +35,7 @@ RUN apt-get update && \
         python3 \
         python3-dev \
         python3-pip \
+        python3-sphinx \
         wget \
         perl \
         qtbase5-dev \
@@ -58,6 +59,12 @@ RUN apt-get update && \
         libopenjp2-7-dev \
         uuid-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
 
 # Set up a non-root user
 ARG USER=devuser

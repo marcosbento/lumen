@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 archlinux:base-20250518.0.352066
+FROM --platform=linux/amd64 archlinux:base-20250622.0.370030
 
 RUN pacman -Sy --noconfirm \
         vim \
@@ -16,6 +16,12 @@ RUN pacman -Sy --noconfirm \
         python3 \
         sudo \
     && pacman -Sc --noconfirm
+
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
 
 # Set up a non-root user
 ARG USER=devuser

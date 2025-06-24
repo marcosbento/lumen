@@ -1,10 +1,8 @@
-FROM archlinux:base-20250518.0.352066
+FROM debian:11.11
 
-# pacman -Sy vim clang gcc cmake ninja git boost boost-libs qt6-base qt6-svg qt6-5compat qt6-charts
+ENV DEBIAN_FRONTEND=noninteractive
 
-
-
-RUN packapt-get update && \
+RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         vim \
@@ -37,6 +35,7 @@ RUN packapt-get update && \
         python3 \
         python3-dev \
         python3-pip \
+        python3-sphinx \
         wget \
         perl \
         qtbase5-dev \
@@ -60,6 +59,12 @@ RUN packapt-get update && \
         libopenjp2-7-dev \
         uuid-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
 
 # Set up a non-root user
 ARG USER=devuser

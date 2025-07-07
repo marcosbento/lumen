@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Collect timestamp
         id: timestamp
-        run: echo "::set-output name=timestamp::$(date +'%Y%m%dT%H%M%S')"
+        run: echo "timestamp=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest

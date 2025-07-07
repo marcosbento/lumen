@@ -1,0 +1,71 @@
+
+name: dockerizing
+
+on:
+  push:
+    branches:
+      - stable
+      - develop
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+
+    outputs:
+      timestamp: ${{ steps.timestamp.outputs.timestamp }}
+
+    steps:
+      - name: Collect timestamp
+        id: timestamp
+        run: echo "::set-output name=timestamp::$(date +'%Y%m%dT%H%M%S')"
+
+  build:
+    runs-on: ubuntu-latest
+
+    needs: bootstrap
+
+    strategy:
+      matrix:
+        image:
+          - 0dev
+          - arch-20250622
+          - debian-11.11
+          - debian-12.10
+          - fedora-37
+          - fedora-42
+          - rocky-8.6
+          - rocky-9.3
+          - ubuntu-22.04
+          - ubuntu-24.04
+
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Print matrix parameters
+        run: |
+          echo "Image: ${{ matrix.image }}"
+          echo "Timestamp: ${{ needs.bootstrap.outputs.timestamp }}"
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          file: ./${{ matrix.image }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}_${{ needs.bootstrap.outputs.timestamp }}
+            ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}
+          labels: |
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.created=${{ needs.bootstrap.outputs.timestamp }}

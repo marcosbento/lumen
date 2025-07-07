@@ -52,6 +52,7 @@ RUN dnf update -y \
         && \
     dnf clean all
 
+# Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

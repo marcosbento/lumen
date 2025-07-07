@@ -17,6 +17,7 @@ RUN pacman -Sy --noconfirm \
         sudo \
     && pacman -Sc --noconfirm
 
+# Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

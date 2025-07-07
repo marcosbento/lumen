@@ -38,8 +38,7 @@ RUN apt-get update -y \
             tini \
       && rm -rf /var/lib/apt/lists/*
 
-# Install latest CMake, at this time
-
+# Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

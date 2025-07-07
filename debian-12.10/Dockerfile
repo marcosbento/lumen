@@ -60,6 +60,7 @@ RUN apt-get update && \
         uuid-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

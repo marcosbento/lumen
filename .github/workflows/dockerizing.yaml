@@ -2,10 +2,13 @@
 name: dockerizing
 
 on:
+  # Trigger the workflow on push to the stable branch
   push:
     branches:
       - stable
-      - develop
+
+  # Trigger the workflow manually
+  workflow_dispatch: ~
 
 jobs:
   bootstrap:

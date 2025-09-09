@@ -34,6 +34,14 @@ services:
     profiles:
       - development
 
+  debian-13.1:
+    build: 
+      context: ./
+      dockerfile: ./debian-13.1/Dockerfile
+    image: marcosbento/lumen:debian-13.1
+    profiles:
+      - development
+
   fedora-37:
     build: 
       context: ./

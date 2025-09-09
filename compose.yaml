@@ -26,11 +26,11 @@ services:
     profiles:
       - development
 
-  debian-12.10:
+  debian-12.12:
     build: 
       context: ./
-      dockerfile: ./debian-12.10/Dockerfile
-    image: marcosbento/lumen:debian-12.10
+      dockerfile: ./debian-12.12/Dockerfile
+    image: marcosbento/lumen:debian-12.12
     profiles:
       - development
 

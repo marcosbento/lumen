@@ -14,6 +14,7 @@ RUN pacman -Sy --noconfirm \
         qt6-5compat \
         qt6-charts \
         python3 \
+        which \
         sudo \
     && pacman -Sc --noconfirm
 

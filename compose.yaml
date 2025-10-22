@@ -10,11 +10,11 @@ services:
     profiles:
       - development
 
-  arch-20250907:
+  arch-20251019:
     build: 
       context: ./
-      dockerfile: ./arch-20250907/Dockerfile
-    image: marcosbento/lumen:arch-20250907
+      dockerfile: ./arch-20251019/Dockerfile
+    image: marcosbento/lumen:arch-20251019
     profiles:
       - development
 

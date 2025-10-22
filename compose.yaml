@@ -61,16 +61,16 @@ services:
   rocky-8.6:
     build: 
       context: ./
-      dockerfile: ./rocky-8.6/Dockerfile
-    image: marcosbento/lumen:rocky-8.6
+      dockerfile: ./rocky-8.10/Dockerfile
+    image: marcosbento/lumen:rocky-8.10
     profiles:
       - development
   
   rocky-9.3:
     build: 
       context: ./
-      dockerfile: ./rocky-9.3/Dockerfile
-    image: marcosbento/lumen:rocky-9.3
+      dockerfile: ./rocky-9.6/Dockerfile
+    image: marcosbento/lumen:rocky-9.6
     profiles:
       - development
   

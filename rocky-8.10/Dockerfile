@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:8.6
+FROM rockylinux/rockylinux:8.10
 
 RUN dnf groupinstall -y "Development Tools" \
         && \

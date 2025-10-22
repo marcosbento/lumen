@@ -73,6 +73,14 @@ services:
     image: marcosbento/lumen:rocky-9.3
     profiles:
       - development
+  
+  rocky-10.0:
+    build: 
+      context: ./
+      dockerfile: ./rocky-10.0/Dockerfile
+    image: marcosbento/lumen:rocky-10.0
+    profiles:
+      - development
 
   ubuntu-22.04:
     build: 

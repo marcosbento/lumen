@@ -31,14 +31,15 @@ jobs:
       matrix:
         image:
           - 0dev
-          - arch-20250907
+          - arch-20251019
           - debian-11.11
           - debian-12.12
           - debian-13.1
           - fedora-37
           - fedora-42
-          - rocky-8.6
-          - rocky-9.3
+          - rocky-8.10
+          - rocky-9.6
+          - rocky-10.0
           - ubuntu-22.04
           - ubuntu-24.04
 

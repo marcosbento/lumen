@@ -34,11 +34,11 @@ services:
     profiles:
       - development
 
-  debian-13.1:
+  debian-13.2:
     build: 
       context: ./
-      dockerfile: ./debian-13.1/Dockerfile
-    image: marcosbento/lumen:debian-13.1
+      dockerfile: ./debian-13.2/Dockerfile
+    image: marcosbento/lumen:debian-13.2
     profiles:
       - development
 
@@ -58,7 +58,7 @@ services:
     profiles:
       - development
 
-  rocky-8.6:
+  rocky-8.10:
     build: 
       context: ./
       dockerfile: ./rocky-8.10/Dockerfile

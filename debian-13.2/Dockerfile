@@ -1,4 +1,4 @@
-FROM debian:13.1
+FROM debian:13.2
 
 ENV DEBIAN_FRONTEND=noninteractive
 

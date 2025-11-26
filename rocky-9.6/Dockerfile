@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9.6
+FROM rockylinux/rockylinux:9.6.20250531
 
 RUN dnf groupinstall -y "Development Tools" \
         && \
@@ -34,8 +34,6 @@ RUN dnf groupinstall -y "Development Tools" \
         libpng-devel \
         eigen3-devel \
         lapack-devel \
-        proj \
-        proj-devel \
         netcdf-devel \
         python3 \
         python3-devel \

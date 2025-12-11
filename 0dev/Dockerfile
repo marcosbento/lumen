@@ -19,13 +19,14 @@ RUN apt-get update -y \
             gcc-12 g++-12 gfortran-12 \
             gcc-13 g++-13 gfortran-13 \
             gcc-14 g++-14 gfortran-14 \
-            clang \
-            clang-14 \
-            clang-15 \
-            clang-16 \
-            clang-17 \
-            clang-18 \
-            clang-19 \
+            clang clang-tidy \
+            clang-14 clang-tidy-14 \
+            clang-15 clang-tidy-15 \
+            clang-16 clang-tidy-16 \
+            clang-17 clang-tidy-17 \
+            clang-18 clang-tidy-18 \
+            clang-19 clang-tidy-19 \
+            clang-20 clang-tidy-20 \
             ninja-build \
             gdb \
             bison flex \

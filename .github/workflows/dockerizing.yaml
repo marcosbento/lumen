@@ -2,6 +2,9 @@
 name: dockerizing
 
 on:
+  schedule:
+     - cron: "0 0 * * SAT"  # Run weekly on Saturdays at midnight UTC
+
   # Trigger the workflow on push to the stable branch
   push:
     branches:

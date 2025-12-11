@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 archlinux/archlinux:base-20251019.0.437072
 
-RUN pacman -Sy --noconfirm \
+RUN pacman -Suy --noconfirm \
         vim \
         clang \
         gcc \

@@ -49,8 +49,8 @@ RUN dnf update -y \
         boost-static \
         boost-python3-devel \
         rpcgen \
-        && \
-    dnf clean all
+        pybind11-devel \
+    && dnf clean all
 
 # Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh

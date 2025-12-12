@@ -37,6 +37,7 @@ RUN apt-get update -y \
             libboost-program-options-dev libboost-python-dev libboost-date-time-dev libboost-test-dev \
             unzip \
             tini \
+            pybind11-dev \
       && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake

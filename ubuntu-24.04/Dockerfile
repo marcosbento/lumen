@@ -55,6 +55,7 @@ RUN apt-get update && \
         unzip \
         libopenjp2-7-dev \
         uuid-dev \
+        pybind11-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake

@@ -14,6 +14,7 @@ RUN pacman -Suy --noconfirm \
         qt6-5compat \
         qt6-charts \
         python3 \
+        pybind11 \
         which \
         sudo \
     && pacman -Sc --noconfirm

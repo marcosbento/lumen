@@ -35,9 +35,10 @@ RUN dnf groupinstall -y "Development Tools" \
         proj \
         proj-devel \
         netcdf-devel \
-        python3 \
-        python3-devel \
-        python3-pip \
+        python3.12 \
+        python3.12-devel \
+        python3.12-pip \
+        python3.12-pybind11-devel \
         ncurses-devel \
         libtirpc \
         libtirpc-devel \
@@ -57,7 +58,6 @@ RUN dnf groupinstall -y "Development Tools" \
         boost-static \
         boost-python3-devel \
         rpcgen \
-        pybind11-devel \
     && dnf clean all
 
 # Install latest CMake at /opt/cmake

@@ -21,6 +21,7 @@ RUN apk update \
         python3-dev \
         py3-pybind11-dev \
         sudo \
+        perl \
     && apk upgrade --no-cache
 
 # Set up a non-root user

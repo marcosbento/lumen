@@ -31,6 +31,7 @@ jobs:
     needs: bootstrap
 
     strategy:
+      max-parallel: 2
       matrix:
         image:
           - 0dev

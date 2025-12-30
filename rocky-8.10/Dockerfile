@@ -49,7 +49,7 @@ RUN dnf groupinstall -y "Development Tools" \
         qt5-qtbase-gui \
         qt5-qtsvg-devel \
         qt5-qtxmlpatterns-devel \
-        expat-devel \ 
+        expat-devel \
         libcurl-devel \
         gdbm-devel \
         openjpeg2-devel \

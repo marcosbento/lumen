@@ -82,11 +82,11 @@ services:
     profiles:
       - development
   
-  rocky-10.0:
+  rocky-10.1:
     build: 
       context: ./
-      dockerfile: ./rocky-10.0/Dockerfile
-    image: marcosbento/lumen:rocky-10.0
+      dockerfile: ./rocky-10.1/Dockerfile
+    image: marcosbento/lumen:rocky-10.1
     profiles:
       - development
 

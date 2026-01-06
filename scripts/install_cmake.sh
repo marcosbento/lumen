@@ -11,7 +11,7 @@ CMAKE_TARBALL=cmake-${CMAKE_VERSION}-${CMAKE_OS}-${CMAKE_ARCH}.tar.gz
 CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_TARBALL}
 
 # Download CMake
-curl -SL -k ${CMAKE_URL} -o /tmp/${CMAKE_TARBALL}
+curl -SL ${CMAKE_URL} -o /tmp/${CMAKE_TARBALL}
 # Extract CMake
 mkdir -p /opt/cmake
 tar -xzf /tmp/${CMAKE_TARBALL} -C /opt/cmake --strip-components=1

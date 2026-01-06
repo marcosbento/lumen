@@ -37,6 +37,7 @@ jobs:
           - 0dev
           - almalinux-8.10
           - almalinux-9.7
+          - almalinux-10.1
           - alpine-3.23
           - arch-20251019
           - debian-11.11

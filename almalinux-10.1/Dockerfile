@@ -1,8 +1,6 @@
 FROM almalinux:10.1-20251124
 
-RUN sed -i -e '$a\sslverify=0' /etc/dnf/dnf.conf \
-        && \
-    dnf groupinstall -y "Development Tools" \
+RUN dnf groupinstall -y "Development Tools" \
         && \
     dnf install -y 'dnf-command(config-manager)' \
         && \
@@ -22,7 +20,7 @@ RUN sed -i -e '$a\sslverify=0' /etc/dnf/dnf.conf \
         gcc-c++ \
         gcc-gfortran \
         clang \
-        cmake3 \
+        cmake \
         ninja-build \
         make \
         fftw-devel \
@@ -62,13 +60,6 @@ RUN sed -i -e '$a\sslverify=0' /etc/dnf/dnf.conf \
         pybind11-devel \
         && \
     dnf clean all
-
-# Install latest CMake at /opt/cmake
-COPY scripts/install_cmake.sh /tmp/install_cmake.sh
-RUN chmod +x /tmp/install_cmake.sh && \
-    /tmp/install_cmake.sh && \
-    rm /tmp/install_cmake.sh
-ENV PATH="/opt/cmake/bin:${PATH}"
 
 # Set up a non-root user
 ARG USER=devuser

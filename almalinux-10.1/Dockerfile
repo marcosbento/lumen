@@ -1,14 +1,14 @@
-FROM rockylinux/rockylinux:9.6.20250531
+FROM almalinux:10.1-20251124
 
-RUN dnf groupinstall -y "Development Tools" \
+RUN sed -i -e '$a\sslverify=0' /etc/dnf/dnf.conf \
         && \
-    dnf install -y \
-        'dnf-command(config-manager)' \
+    dnf groupinstall -y "Development Tools" \
+        && \
+    dnf install -y 'dnf-command(config-manager)' \
         && \
     dnf config-manager --set-enabled crb \
         && \
-    dnf install -y \
-        epel-release \
+    dnf install -y epel-release \
         && \
     dnf update -y \
         && \
@@ -34,6 +34,8 @@ RUN dnf groupinstall -y "Development Tools" \
         libpng-devel \
         eigen3-devel \
         lapack-devel \
+        proj \
+        proj-devel \
         netcdf-devel \
         python3 \
         python3-devel \
@@ -48,7 +50,7 @@ RUN dnf groupinstall -y "Development Tools" \
         qt5-qtbase-gui \
         qt5-qtsvg-devel \
         qt5-qtxmlpatterns-devel \
-        expat-devel \ 
+        expat-devel \
         libcurl-devel \
         gdbm-devel \
         openjpeg2-devel \
@@ -58,7 +60,8 @@ RUN dnf groupinstall -y "Development Tools" \
         boost-python3-devel \
         rpcgen \
         pybind11-devel \
-    && dnf clean all
+        && \
+    dnf clean all
 
 # Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh

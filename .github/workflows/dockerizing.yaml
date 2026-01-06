@@ -35,6 +35,8 @@ jobs:
       matrix:
         image:
           - 0dev
+          - almalinux-8.10
+          - almalinux-9.7
           - alpine-3.23
           - arch-20251019
           - debian-11.11
@@ -42,8 +44,6 @@ jobs:
           - debian-13.2
           - fedora-37
           - fedora-42
-          - rocky-8.10
-          - rocky-9.6
           - ubuntu-22.04
           - ubuntu-24.04
 

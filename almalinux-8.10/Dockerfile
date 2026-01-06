@@ -1,11 +1,10 @@
-FROM rockylinux/rockylinux:8.10.20240528
+FROM almalinux:8.10-20260104
 
 RUN dnf groupinstall -y "Development Tools" \
         && \
     dnf config-manager --set-enabled powertools \
         && \
-    dnf install -y \
-        epel-release \
+    dnf install -y epel-release \
         && \
     dnf update -y \
         && \
@@ -58,7 +57,8 @@ RUN dnf groupinstall -y "Development Tools" \
         boost-static \
         boost-python3-devel \
         rpcgen \
-    && dnf clean all
+        && \
+    dnf clean all
 
 # Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh

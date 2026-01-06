@@ -66,27 +66,27 @@ services:
     profiles:
       - development
 
-  rocky-8.10:
+  almalinux-8.10:
     build: 
       context: ./
-      dockerfile: ./rocky-8.10/Dockerfile
-    image: marcosbento/lumen:rocky-8.10
+      dockerfile: ./almalinux-8.10/Dockerfile
+    image: marcosbento/lumen:almalinux-8.10
     profiles:
       - development
   
-  rocky-9.3:
+  almalinux-9.7:
     build: 
       context: ./
-      dockerfile: ./rocky-9.6/Dockerfile
-    image: marcosbento/lumen:rocky-9.6
+      dockerfile: ./almalinux-9.7/Dockerfile
+    image: marcosbento/lumen:almalinux-9.7
     profiles:
       - development
   
-  rocky-10.1:
+  almalinux-10.1:
     build: 
       context: ./
-      dockerfile: ./rocky-10.1/Dockerfile
-    image: marcosbento/lumen:rocky-10.1
+      dockerfile: ./almalinux-10.1/Dockerfile
+    image: marcosbento/lumen:almalinux-10.1
     profiles:
       - development
 

@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 archlinux/archlinux:base-20251019.0.437072
+FROM --platform=linux/amd64 archlinux/archlinux:base-20260104.0.477168
 
 RUN pacman -Suy --noconfirm \
         vim \
@@ -17,6 +17,7 @@ RUN pacman -Suy --noconfirm \
         pybind11 \
         which \
         sudo \
+        wget \
     && pacman -Sc --noconfirm
 
 # Install latest CMake at /opt/cmake

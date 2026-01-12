@@ -17,6 +17,10 @@ wget ${CMAKE_PACKAGE_URL} -O /tmp/${CMAKE_PACKAGE}
 # Download CMake SHA256 checksum
 wget ${CMAKE_SHA_URL} -O /tmp/${CMAKE_SHA}
 
+# Verify CMake package
+cd /tmp
+sha256sum -c ${CMAKE_SHA} --ignore-missing
+
 # Extract CMake
 mkdir -p /opt/cmake
 tar -xzf /tmp/${CMAKE_PACKAGE} -C /opt/cmake --strip-components=1

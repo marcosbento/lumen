@@ -9,6 +9,9 @@ RUN dnf groupinstall -y "Development Tools" \
         sudo \
         rpm-build \
         wget \
+        curl \
+        iputils \
+        \
         git \
         gcc \
         gcc-c++ \

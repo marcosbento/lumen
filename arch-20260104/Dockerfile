@@ -18,6 +18,7 @@ RUN pacman -Suy --noconfirm \
         which \
         sudo \
         wget \
+        inetutils \
     && pacman -Sc --noconfirm
 
 # Install latest CMake at /opt/cmake

@@ -9,7 +9,11 @@ RUN apt-get update -y \
             software-properties-common \
             sudo \
             ca-certificates \
-            vim wget curl \
+            vim \
+            wget \
+            curl \
+            iputils-ping \
+            \
             build-essential \
             git \
             gcc g++ gfortran \

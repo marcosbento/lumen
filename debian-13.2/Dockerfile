@@ -9,6 +9,7 @@ RUN apt-get update && \
         sudo \
         wget \
         curl \
+        iputils-ping \
         \
         build-essential \
         git \

@@ -8,6 +8,9 @@ RUN dnf update -y \
         sudo \
         rpm-build \
         wget \
+        curl \
+        iputils \
+        \
         git \
         gcc \
         gcc-c++ \

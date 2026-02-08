@@ -12,6 +12,7 @@ RUN apk update \
         g++ \
         ninja-build \
         ninja-is-really-ninja \
+        make \
         git \
         boost-dev \
         qt6-qtbase-dev \
@@ -19,10 +20,15 @@ RUN apk update \
         qt6-qtcharts-dev \
         qt6-qt5compat-dev \
         python3-dev \
-        py3-pybind11-dev \
         sudo \
         perl \
     && apk upgrade --no-cache
+
+# Install pybind11
+COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
+RUN chmod +x /tmp/install_pybind11.sh && \
+    /tmp/install_pybind11.sh && \
+    rm /tmp/install_pybind11.sh
 
 # Set up a non-root user
 ARG USER=devuser

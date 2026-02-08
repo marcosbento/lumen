@@ -52,7 +52,6 @@ RUN dnf update -y \
         boost-static \
         boost-python3-devel \
         rpcgen \
-        pybind11-devel \
     && dnf clean all
 
 # Install latest CMake at /opt/cmake
@@ -61,6 +60,12 @@ RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
     rm /tmp/install_cmake.sh
 ENV PATH="/opt/cmake/bin:${PATH}"
+
+# Install pybind11
+COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
+RUN chmod +x /tmp/install_pybind11.sh && \
+    /tmp/install_pybind11.sh && \
+    rm /tmp/install_pybind11.sh
 
 # Set up a non-root user
 ARG USER=devuser

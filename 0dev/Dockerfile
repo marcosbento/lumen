@@ -41,7 +41,6 @@ RUN apt-get update -y \
             libboost-program-options-dev libboost-python-dev libboost-date-time-dev libboost-test-dev \
             unzip \
             tini \
-            pybind11-dev \
       && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake
@@ -50,6 +49,12 @@ RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
     rm /tmp/install_cmake.sh
 ENV PATH="/opt/cmake/bin:${PATH}"
+
+# Install pybind11
+COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
+RUN chmod +x /tmp/install_pybind11.sh && \
+    /tmp/install_pybind11.sh && \
+    rm /tmp/install_pybind11.sh
 
 # Set up a non-root user
 ARG USER=devuser

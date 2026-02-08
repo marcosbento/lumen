@@ -37,7 +37,6 @@ RUN dnf groupinstall -y "Development Tools" \
         python3.12 \
         python3.12-devel \
         python3.12-pip \
-        python3.12-pybind11-devel \
         ncurses-devel \
         libtirpc \
         libtirpc-devel \
@@ -66,6 +65,12 @@ RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
     rm /tmp/install_cmake.sh
 ENV PATH="/opt/cmake/bin:${PATH}"
+
+# Install pybind11
+COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
+RUN chmod +x /tmp/install_pybind11.sh && \
+    /tmp/install_pybind11.sh && \
+    rm /tmp/install_pybind11.sh
 
 # Set up a non-root user
 ARG USER=devuser

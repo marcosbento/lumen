@@ -46,6 +46,7 @@ jobs:
           - debian-13.2
           - fedora-37
           - fedora-42
+          - opensuse-tumbleweed
           - ubuntu-22.04
           - ubuntu-24.04
 

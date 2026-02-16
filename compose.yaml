@@ -106,3 +106,10 @@ services:
     profiles:
       - development
       
+  opensuse-tumbleweed:
+    build: 
+      context: ./
+      dockerfile: ./opensuse-tumbleweed/Dockerfile
+    image: marcosbento/lumen:opensuse-tumbleweed
+    profiles:
+      - development

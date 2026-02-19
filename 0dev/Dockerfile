@@ -17,8 +17,8 @@ RUN apt-get update -y \
             build-essential \
             git \
             gcc g++ gfortran \
-            gcc-9 g++9 gfortran-9 \
-            gcc-10 g++10 gfortran-10 \
+            gcc-9 g++-9 gfortran-9 \
+            gcc-10 g++-10 gfortran-10 \
             gcc-11 g++-11 gfortran-11 \
             gcc-12 g++-12 gfortran-12 \
             gcc-13 g++-13 gfortran-13 \
@@ -35,12 +35,18 @@ RUN apt-get update -y \
             gdb \
             bison flex \
             libssl-dev \
+            \
             python3 python3-dev python3-pip python3-sphinx \
+            \
             qt6-base-dev qt6-svg-dev qt6-5compat-dev \
             libboost-dev libboost-system-dev libboost-timer-dev libboost-chrono-dev libboost-filesystem-dev \
             libboost-program-options-dev libboost-python-dev libboost-date-time-dev libboost-test-dev \
             unzip \
             tini \
+      && add-apt-repository -y ppa:deadsnakes/ppa \
+      && apt-get update -y \
+      && apt-get install -y --no-install-recommends \
+            python3.8-dev python3.9-dev python3.10-dev python3.11-dev python3.12-dev python3.13-dev python3.14-dev \
       && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake
@@ -60,7 +66,7 @@ RUN chmod +x /tmp/install_pybind11.sh && \
 ARG USER=devuser
 ARG UID=1001
 RUN useradd -m -s /bin/bash -u $UID $USER && \
-    echo "devuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER && \
+    echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER && \
     chmod 0440 /etc/sudoers.d/$USER
 
 USER $USER

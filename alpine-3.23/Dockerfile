@@ -34,7 +34,7 @@ RUN chmod +x /tmp/install_pybind11.sh && \
 ARG USER=devuser
 ARG UID=1000
 RUN adduser -D -s /bin/bash -u $UID $USER \
-    && echo "devuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER \
+    && echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER
 
 USER $USER

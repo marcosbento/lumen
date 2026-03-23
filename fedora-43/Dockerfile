@@ -1,10 +1,9 @@
-FROM fedora:37
+FROM fedora:43
 
-RUN dnf groupinstall -y "Development Tools" \
-        && \
-    dnf update -y \
+RUN dnf update -y \
         && \
     dnf install -y \
+        @development-tools \
         vim \
         sudo \
         rpm-build \

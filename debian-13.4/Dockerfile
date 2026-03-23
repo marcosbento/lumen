@@ -1,4 +1,4 @@
-FROM debian:12.12
+FROM debian:13.4
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -39,9 +39,10 @@ RUN apt-get update && \
         python3-sphinx \
         wget \
         perl \
-        qtbase5-dev \
-        libqt5svg5-dev \
-        libqt5xmlpatterns5-dev \
+        qt6-base-dev \
+        qt6-svg-dev \
+        qt6-charts-dev \
+        qt6-5compat-dev \
         libboost-dev \
         libboost-system-dev \
         libboost-timer-dev \

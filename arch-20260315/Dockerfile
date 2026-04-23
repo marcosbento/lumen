@@ -3,7 +3,9 @@ FROM --platform=linux/amd64 archlinux/archlinux:base-20260315.0.500537
 RUN pacman -Suy --noconfirm \
         vim \
         clang \
+        flang \
         gcc \
+        gcc-fortran \
         cmake \
         ninja \
         make \

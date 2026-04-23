@@ -8,8 +8,10 @@ RUN apk update \
         vim \
         cmake \
         clang \
+        flang \
         gcc \
         g++ \
+        gfortran \
         ninja-build \
         ninja-is-really-ninja \
         make \

@@ -24,7 +24,6 @@ RUN dnf update -y \
         flex \
         perl \
         openssl-devel \
-        libaec-devel \
         libpng-devel \
         eigen3-devel \
         lapack-devel \
@@ -66,6 +65,12 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
+
+# Install libaec
+COPY scripts/install_libaec.sh /tmp/install_libaec.sh
+RUN chmod +x /tmp/install_libaec.sh && \
+    /tmp/install_libaec.sh && \
+    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

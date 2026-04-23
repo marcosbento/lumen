@@ -32,6 +32,13 @@ RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
 
+# Install libaec
+COPY scripts/install_libaec.sh /tmp/install_libaec.sh
+RUN chmod +x /tmp/install_libaec.sh && \
+    /tmp/install_libaec.sh && \
+    rm /tmp/install_libaec.sh
+
+
 # Set up a non-root user
 ARG USER=devuser
 ARG UID=1000

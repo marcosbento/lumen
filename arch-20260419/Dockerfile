@@ -1,9 +1,8 @@
-FROM --platform=linux/amd64 archlinux/archlinux:base-20260315.0.500537
+FROM --platform=linux/amd64 archlinux/archlinux:base-20260419.0.517065
 
 RUN pacman -Suy --noconfirm \
         vim \
         clang \
-        flang \
         gcc \
         gcc-fortran \
         cmake \

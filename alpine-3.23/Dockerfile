@@ -8,7 +8,10 @@ RUN apk update \
         vim \
         cmake \
         clang \
-        flang \
+        clang-dev \
+        llvm \
+        llvm-dev \
+        bison flex \
         gcc \
         g++ \
         gfortran \
@@ -37,7 +40,6 @@ COPY scripts/install_libaec.sh /tmp/install_libaec.sh
 RUN chmod +x /tmp/install_libaec.sh && \
     /tmp/install_libaec.sh && \
     rm /tmp/install_libaec.sh
-
 
 # Set up a non-root user
 ARG USER=devuser

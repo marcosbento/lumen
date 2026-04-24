@@ -5,7 +5,6 @@ RUN zypper refresh \
     && zypper install -y \
         vim \
         clang \
-        flang \
         gcc \
         gcc-fortran \
         ninja \

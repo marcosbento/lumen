@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 archlinux/archlinux:base-20260419.0.517065
+FROM --platform=linux/amd64 archlinux/archlinux:base-20260510.0.525573
 
 RUN pacman -Suy --noconfirm \
         vim \

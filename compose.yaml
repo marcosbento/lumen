@@ -18,11 +18,11 @@ services:
     profiles:
       - development
 
-  arch-20260419:
+  arch-20260510:
     build: 
       context: ./
-      dockerfile: ./arch-20260419/Dockerfile
-    image: marcosbento/lumen:arch-20260419
+      dockerfile: ./arch-20260510/Dockerfile
+    image: marcosbento/lumen:arch-20260510
     profiles:
       - development
 

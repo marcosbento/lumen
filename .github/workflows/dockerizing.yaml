@@ -48,6 +48,7 @@ jobs:
           - opensuse-tumbleweed
           - ubuntu-22.04
           - ubuntu-24.04
+          - ubuntu-26.04
 
     steps:
       - name: Login to Docker Hub

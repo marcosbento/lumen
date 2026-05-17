@@ -97,7 +97,15 @@ services:
     image: marcosbento/lumen:ubuntu-24.04
     profiles:
       - development
-      
+
+  ubuntu-26.04:
+    build: 
+      context: ./
+      dockerfile: ./ubuntu-26.04/Dockerfile
+    image: marcosbento/lumen:ubuntu-26.04
+    profiles:
+      - development
+
   opensuse-tumbleweed:
     build: 
       context: ./

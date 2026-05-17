@@ -50,11 +50,11 @@ services:
     profiles:
       - development
 
-  fedora-43:
+  fedora-44:
     build: 
       context: ./
-      dockerfile: ./fedora-43/Dockerfile
-    image: marcosbento/lumen:fedora-43
+      dockerfile: ./fedora-44/Dockerfile
+    image: marcosbento/lumen:fedora-44
     profiles:
       - development
 

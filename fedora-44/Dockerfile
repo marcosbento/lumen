@@ -1,4 +1,4 @@
-FROM fedora:43
+FROM fedora:44
 
 RUN dnf update -y \
         && \
@@ -16,7 +16,6 @@ RUN dnf update -y \
         gcc-c++ \
         gcc-gfortran \
         clang \
-        cmake3 \
         ninja-build \
         make \
         fftw-devel \

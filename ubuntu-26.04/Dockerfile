@@ -47,6 +47,7 @@ RUN apt-get update && \
         libboost-python-dev \
         libboost-date-time-dev \
         libboost-test-dev \
+        libboost-process-dev \
         proj-bin \
         libproj-dev \
         libexpat1-dev \

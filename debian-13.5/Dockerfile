@@ -1,4 +1,4 @@
-FROM debian:13.4
+FROM debian:13.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -79,7 +79,7 @@ COPY scripts/install_libaec.sh /tmp/install_libaec.sh
 RUN chmod +x /tmp/install_libaec.sh && \
     /tmp/install_libaec.sh && \
     rm /tmp/install_libaec.sh
-
+ 
 # Set up a non-root user
 ARG USER=devuser
 ARG UID=1000

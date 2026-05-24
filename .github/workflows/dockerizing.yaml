@@ -43,7 +43,7 @@ jobs:
           - arch-20260510
           - debian-11.11
           - debian-12.13
-          - debian-13.4
+          - debian-13.5
           - fedora-44
           - opensuse-tumbleweed
           - ubuntu-22.04

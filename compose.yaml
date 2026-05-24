@@ -42,11 +42,11 @@ services:
     profiles:
       - development
 
-  debian-13.4:
+  debian-13.5:
     build: 
       context: ./
-      dockerfile: ./debian-13.4/Dockerfile
-    image: marcosbento/lumen:debian-13.4
+      dockerfile: ./debian-13.5/Dockerfile
+    image: marcosbento/lumen:debian-13.5
     profiles:
       - development
 

@@ -56,6 +56,7 @@ RUN apt-get update && \
         unzip \
         libopenjp2-7-dev \
         uuid-dev \
+        libcrypt-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake

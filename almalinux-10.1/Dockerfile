@@ -42,11 +42,9 @@ RUN dnf groupinstall -y "Development Tools" \
         libtirpc-devel \
         postgresql-libs \
         postgresql-devel \
-        qt5-devel \
-        qt5-qtbase-devel \
-        qt5-qtbase-gui \
-        qt5-qtsvg-devel \
-        qt5-qtxmlpatterns-devel \
+        qt6-qtbase-devel \
+        qt6-qtbase-gui \
+        qt6-qtsvg-devel \
         expat-devel \
         libcurl-devel \
         gdbm-devel \

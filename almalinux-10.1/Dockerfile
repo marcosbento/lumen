@@ -45,6 +45,8 @@ RUN dnf groupinstall -y "Development Tools" \
         qt6-qtbase-devel \
         qt6-qtbase-gui \
         qt6-qtsvg-devel \
+        qt6-qtcharts-devel \
+        qt6-qt5compat-devel \
         expat-devel \
         libcurl-devel \
         gdbm-devel \

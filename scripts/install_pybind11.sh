@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Download and install latest pybind11
-PYBIND11_VERSION=3.0.1
+PYBIND11_VERSION=3.0.4
 PYBIND11_GITHUB_URL=https://github.com/pybind/pybind11.git
 
 # Download pybind11, using git clone to get the full repository and avoid issues with tarball downloads

@@ -37,7 +37,7 @@ jobs:
         image:
           - 0dev
           - almalinux-8.10
-          - almalinux-9.7
+          - almalinux-9.8
           - almalinux-10.2
           - alpine-3.23
           - arch-20260510

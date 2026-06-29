@@ -1,4 +1,4 @@
-FROM almalinux:8.10-20260104
+FROM almalinux:8.10-20260602
 
 RUN dnf groupinstall -y "Development Tools" \
         && \

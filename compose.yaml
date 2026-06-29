@@ -74,11 +74,11 @@ services:
     profiles:
       - development
   
-  almalinux-10.1:
+  almalinux-10.2:
     build: 
       context: ./
-      dockerfile: ./almalinux-10.1/Dockerfile
-    image: marcosbento/lumen:almalinux-10.1
+      dockerfile: ./almalinux-10.2/Dockerfile
+    image: marcosbento/lumen:almalinux-10.2
     profiles:
       - development
 

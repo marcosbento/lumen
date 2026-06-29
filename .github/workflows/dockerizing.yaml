@@ -39,7 +39,7 @@ jobs:
           - almalinux-8.10
           - almalinux-9.8
           - almalinux-10.2
-          - alpine-3.23
+          - alpine-3.24
           - arch-20260510
           - debian-11.11
           - debian-12.13

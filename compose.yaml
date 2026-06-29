@@ -10,11 +10,11 @@ services:
     profiles:
       - development
 
-  alpine-3.23:
+  alpine-3.24:
     build: 
       context: ./
-      dockerfile: ./alpine-3.23/Dockerfile
-    image: marcosbento/lumen:alpine-3.23
+      dockerfile: ./alpine-3.24/Dockerfile
+    image: marcosbento/lumen:alpine-3.24
     profiles:
       - development
 

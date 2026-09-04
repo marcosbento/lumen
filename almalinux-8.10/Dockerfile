@@ -36,6 +36,7 @@ RUN dnf groupinstall -y "Development Tools" \
         python3.12 \
         python3.12-devel \
         python3.12-pip \
+        python3.12-pytest \
         ncurses-devel \
         libtirpc \
         libtirpc-devel \

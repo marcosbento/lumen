@@ -25,6 +25,7 @@ RUN apk update \
         qt6-qtcharts-dev \
         qt6-qt5compat-dev \
         python3-dev \
+        py3-pytest \
         curl-dev \
         sudo \
         perl \

@@ -16,6 +16,7 @@ RUN pacman -Suy --noconfirm \
         qt6-5compat \
         qt6-charts \
         python3 \
+        python-pytest \
         which \
         sudo \
         wget \

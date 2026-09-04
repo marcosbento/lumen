@@ -36,7 +36,7 @@ RUN apt-get update -y \
             bison flex \
             libssl-dev \
             \
-            python3 python3-dev python3-pip python3-sphinx \
+            python3 python3-dev python3-pip python3-pytest python3-sphinx \
             \
             qt6-base-dev qt6-svg-dev qt6-5compat-dev \
             libboost-dev libboost-system-dev libboost-timer-dev libboost-chrono-dev libboost-filesystem-dev \

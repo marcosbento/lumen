@@ -32,6 +32,7 @@ RUN dnf update -y \
         python3 \
         python3-devel \
         python3-pip \
+        python3-pytest \
         ncurses-devel \
         libtirpc \
         libtirpc-devel \

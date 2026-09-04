@@ -13,6 +13,7 @@ RUN zypper refresh \
         boost-devel libboost*-devel \
         zlib-devel \
         python3-devel \
+        python3-pytest \
         openssl-devel \
         qt6-base-devel qt6-svg-devel qt6-qt5compat-devel \
         wget \

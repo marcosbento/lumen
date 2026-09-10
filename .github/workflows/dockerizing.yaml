@@ -41,7 +41,6 @@ jobs:
           - almalinux-10.2
           - alpine-3.24
           - arch-20260621
-          - debian-11.11
           - debian-12.13
           - debian-13.5
           - fedora-44

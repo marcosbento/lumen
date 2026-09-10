@@ -13,50 +13,26 @@ RUN apt-get update && \
         git \
         gcc \
         g++ \
-        gfortran \
         clang \
         clang-format \
         cmake \
         ninja-build \
-        libfftw3-dev \
-        bison \
-        flex \
         libssl-dev \
-        libpng-dev \
-        libeigen3-dev \
-        liblapack-dev \
-        libncurses5-dev \
-        libnetcdf-dev \
-        libnetcdff-dev \
-        libblas-dev \
-        libpq-dev \
+        zlib1g-dev \
         python3 \
         python3-dev \
         python3-pip \
         python3-pytest \
-        wget \
-        perl \
         qtbase5-dev \
         libqt5svg5-dev \
-        libqt5xmlpatterns5-dev \
         libboost-dev \
         libboost-system-dev \
         libboost-timer-dev \
         libboost-chrono-dev \
-        libboost-filesystem-dev \
         libboost-program-options-dev \
-        libboost-python-dev \
         libboost-date-time-dev \
         libboost-test-dev \
         libboost-process-dev \
-        proj-bin \
-        libproj-dev \
-        libexpat1-dev \
-        libgdbm-dev \
-        libtirpc-dev \
-        unzip \
-        libopenjp2-7-dev \
-        uuid-dev \
         libcrypt-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -72,12 +48,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

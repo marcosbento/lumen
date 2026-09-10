@@ -16,13 +16,13 @@ RUN apt-get update -y \
             \
             build-essential \
             git \
-            gcc g++ gfortran \
-            gcc-9 g++-9 gfortran-9 \
-            gcc-10 g++-10 gfortran-10 \
-            gcc-11 g++-11 gfortran-11 \
-            gcc-12 g++-12 gfortran-12 \
-            gcc-13 g++-13 gfortran-13 \
-            gcc-14 g++-14 gfortran-14 \
+            gcc g++ \
+            gcc-9 g++-9 \
+            gcc-10 g++-10 \
+            gcc-11 g++-11 \
+            gcc-12 g++-12 \
+            gcc-13 g++-13 \
+            gcc-14 g++-14 \
             clang clang-tidy \
             clang-14 clang-tidy-14 \
             clang-15 clang-tidy-15 \
@@ -33,15 +33,15 @@ RUN apt-get update -y \
             clang-20 clang-tidy-20 \
             ninja-build \
             gdb \
-            bison flex \
             libssl-dev \
+            zlib1g-dev \
+            libcrypt-dev \
             \
             python3 python3-dev python3-pip python3-pytest python3-sphinx \
             \
             qt6-base-dev qt6-svg-dev qt6-5compat-dev \
-            libboost-dev libboost-system-dev libboost-timer-dev libboost-chrono-dev libboost-filesystem-dev \
-            libboost-program-options-dev libboost-python-dev libboost-date-time-dev libboost-test-dev \
-            unzip \
+            libboost-dev libboost-system-dev libboost-timer-dev libboost-chrono-dev \
+            libboost-program-options-dev libboost-date-time-dev libboost-test-dev \
             tini \
       && add-apt-repository -y ppa:deadsnakes/ppa \
       && apt-get update -y \
@@ -61,12 +61,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

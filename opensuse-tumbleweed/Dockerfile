@@ -6,12 +6,12 @@ RUN zypper refresh \
         vim \
         clang \
         gcc \
-        gcc-fortran \
         ninja \
         make \
         git \
         boost-devel libboost*-devel \
         zlib-devel \
+        libxcrypt-devel \
         python3-devel \
         python3-pytest \
         openssl-devel \
@@ -35,12 +35,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

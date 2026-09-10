@@ -4,11 +4,12 @@ RUN pacman -Suy --noconfirm \
         vim \
         clang \
         gcc \
-        gcc-fortran \
         cmake \
         ninja \
         make \
         git \
+        openssl \
+        zlib \
         boost \
         boost-libs \
         qt6-base \
@@ -35,12 +36,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

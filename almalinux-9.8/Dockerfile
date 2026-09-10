@@ -18,43 +18,23 @@ RUN dnf groupinstall -y "Development Tools" \
         git \
         gcc \
         gcc-c++ \
-        gcc-gfortran \
         clang \
         cmake \
         ninja-build \
         make \
-        fftw-devel \
-        bison \
-        flex \
-        perl \
         openssl-devel \
-        libpng-devel \
-        eigen3-devel \
-        lapack-devel \
-        netcdf-devel \
+        zlib-devel \
+        libxcrypt-devel \
         python3 \
         python3-devel \
         python3-pip \
         python3-pytest \
-        ncurses-devel \
-        libtirpc \
-        libtirpc-devel \
-        postgresql-libs \
-        postgresql-devel \
         qt5-devel \
         qt5-qtbase-devel \
         qt5-qtbase-gui \
         qt5-qtsvg-devel \
-        qt5-qtxmlpatterns-devel \
-        expat-devel \
-        libcurl-devel \
-        gdbm-devel \
-        openjpeg2-devel \
-        uuid-devel \
         boost-devel \
         boost-static \
-        boost-python3-devel \
-        rpcgen \
         && \
     dnf clean all
 
@@ -63,12 +43,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

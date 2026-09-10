@@ -8,17 +8,14 @@ RUN apk update \
         vim \
         cmake \
         clang \
-        clang-dev \
-        llvm \
-        llvm-dev \
-        bison flex \
         gcc \
         g++ \
-        gfortran \
         ninja-build \
         ninja-is-really-ninja \
         make \
         git \
+        openssl-dev \
+        zlib-dev \
         boost-dev \
         qt6-qtbase-dev \
         qt6-qtsvg-dev \
@@ -26,9 +23,7 @@ RUN apk update \
         qt6-qt5compat-dev \
         python3-dev \
         py3-pytest \
-        curl-dev \
         sudo \
-        perl \
     && apk upgrade --no-cache
 
 # Install pybind11
@@ -36,12 +31,6 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
-
-# Install libaec
-COPY scripts/install_libaec.sh /tmp/install_libaec.sh
-RUN chmod +x /tmp/install_libaec.sh && \
-    /tmp/install_libaec.sh && \
-    rm /tmp/install_libaec.sh
 
 # Set up a non-root user
 ARG USER=devuser

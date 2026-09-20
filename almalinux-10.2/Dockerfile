@@ -15,6 +15,7 @@ RUN dnf groupinstall -y "Development Tools" \
         sudo \
         rpm-build \
         wget \
+        procps-ng \
         git \
         gcc \
         gcc-c++ \

@@ -10,6 +10,7 @@ RUN dnf update -y \
         wget \
         curl \
         iputils \
+        procps-ng \
         \
         git \
         gcc \

@@ -9,7 +9,10 @@ RUN zypper refresh \
         ninja \
         make \
         git \
-        boost-devel libboost*-devel \
+        libboost_date_time-devel \
+        libboost_process-devel \
+        libboost_program_options-devel \
+        libboost_test-devel \
         zlib-devel \
         libxcrypt-devel \
         python3-devel \

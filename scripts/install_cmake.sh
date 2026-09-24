@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Download and install latest CMake 
-CMAKE_VERSION=4.2.1
+CMAKE_VERSION=4.4.3
 CMAKE_ARCH=$(uname -m)
 CMAKE_OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 CMAKE_PACKAGE=cmake-${CMAKE_VERSION}-${CMAKE_OS}-${CMAKE_ARCH}.tar.gz

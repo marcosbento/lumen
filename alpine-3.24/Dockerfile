@@ -1,7 +1,7 @@
 FROM alpine:3.24
 
 # Install development packages
-RUN apk update \
+RUN apk upgrade --no-cache \
     && apk add --no-cache \
         bash \
         curl \
@@ -25,8 +25,7 @@ RUN apk update \
         qt6-qt5compat-dev \
         python3-dev \
         py3-pytest \
-        sudo \
-    && apk upgrade --no-cache
+        sudo
 
 # Install pybind11
 COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh

@@ -20,7 +20,7 @@ RUN zypper refresh \
         python3-devel \
         python3-pytest \
         openssl-devel \
-        qt6-base-devel qt6-svg-devel qt6-qt5compat-devel \
+        qt6-base-devel qt6-svg-devel qt6-charts-devel qt6-qt5compat-devel \
         wget \
         curl \
         tar \

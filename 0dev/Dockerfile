@@ -40,7 +40,7 @@ RUN apt-get update -y \
             \
             python3 python3-dev python3-pip python3-pytest python3-sphinx \
             \
-            qt6-base-dev qt6-svg-dev qt6-5compat-dev \
+            qt6-base-dev qt6-svg-dev qt6-charts-dev qt6-5compat-dev \
             libboost-dev libboost-system-dev libboost-timer-dev libboost-chrono-dev \
             libboost-program-options-dev libboost-date-time-dev libboost-test-dev \
             tini \

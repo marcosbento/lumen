@@ -30,6 +30,7 @@ RUN dnf update -y \
         qt5-qtbase-devel \
         qt5-qtbase-gui \
         qt5-qtsvg-devel \
+        qt5-qtcharts-devel \
         boost-devel \
         boost-static \
     && dnf clean all

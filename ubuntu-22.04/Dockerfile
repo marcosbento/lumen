@@ -27,6 +27,7 @@ RUN apt-get update && \
         python3-pytest \
         qtbase5-dev \
         libqt5svg5-dev \
+        libqt5charts5-dev \
         libboost-dev \
         libboost-system-dev \
         libboost-timer-dev \

@@ -42,3 +42,5 @@ RUN adduser -D -s /bin/bash -u $UID $USER \
 
 USER $USER
 WORKDIR /home/$USER
+
+CMD ["/bin/bash"]

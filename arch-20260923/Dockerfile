@@ -23,7 +23,7 @@ RUN pacman -Suy --noconfirm \
         sudo \
         wget \
         inetutils \
-    && pacman -Sc --noconfirm
+    && yes | pacman -Scc
 
 # Install latest CMake at /opt/cmake
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh

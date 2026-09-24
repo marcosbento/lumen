@@ -41,6 +41,14 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         && \
     dnf clean all
 
+# Install latest CMake at /opt/cmake
+# (distro CMake is kept on purpose, as the Qt devel packages require it)
+COPY scripts/install_cmake.sh /tmp/install_cmake.sh
+RUN chmod +x /tmp/install_cmake.sh && \
+    /tmp/install_cmake.sh && \
+    rm /tmp/install_cmake.sh
+ENV PATH="/opt/cmake/bin:${PATH}"
+
 # Install pybind11
 COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \

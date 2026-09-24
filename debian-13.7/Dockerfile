@@ -17,6 +17,7 @@ RUN apt-get update && \
         g++ \
         clang \
         clang-format \
+        gdb \
         cmake \
         ninja-build \
         libssl-dev \

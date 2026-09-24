@@ -5,6 +5,7 @@ RUN zypper refresh \
     && zypper install -y \
         vim \
         clang \
+        gdb \
         gcc \
         ninja \
         make \

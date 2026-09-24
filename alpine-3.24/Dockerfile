@@ -8,6 +8,7 @@ RUN apk update \
         vim \
         cmake \
         clang \
+        gdb \
         gcc \
         g++ \
         ninja-build \

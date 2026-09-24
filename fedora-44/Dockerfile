@@ -16,6 +16,7 @@ RUN dnf update -y \
         gcc-c++ \
         clang \
         compiler-rt \
+        gdb \
         ninja-build \
         make \
         openssl-devel \

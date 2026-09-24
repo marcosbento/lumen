@@ -19,6 +19,7 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         gcc-c++ \
         clang \
         compiler-rt \
+        gdb \
         cmake3 \
         ninja-build \
         make \

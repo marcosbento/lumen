@@ -2,8 +2,7 @@ FROM fedora:44
 
 RUN dnf update -y \
         && \
-    dnf install -y \
-        @development-tools \
+    dnf install -y --setopt=install_weak_deps=False \
         vim \
         sudo \
         rpm-build \
@@ -16,6 +15,7 @@ RUN dnf update -y \
         gcc \
         gcc-c++ \
         clang \
+        compiler-rt \
         ninja-build \
         make \
         openssl-devel \

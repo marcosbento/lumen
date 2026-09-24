@@ -1,14 +1,14 @@
 FROM almalinux:8.10-20260902
 
-RUN dnf groupinstall -y "Development Tools" \
+RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
         && \
     dnf config-manager --set-enabled powertools \
         && \
-    dnf install -y epel-release \
+    dnf install -y --setopt=install_weak_deps=False epel-release \
         && \
     dnf update -y \
         && \
-    dnf install -y \
+    dnf install -y --setopt=install_weak_deps=False \
         vim \
         sudo \
         rpm-build \
@@ -18,6 +18,7 @@ RUN dnf groupinstall -y "Development Tools" \
         gcc \
         gcc-c++ \
         clang \
+        compiler-rt \
         cmake3 \
         ninja-build \
         make \

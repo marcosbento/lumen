@@ -1,16 +1,14 @@
 FROM almalinux:9.8-20260902
 
-RUN dnf groupinstall -y "Development Tools" \
-        && \
-    dnf install -y 'dnf-command(config-manager)' \
+RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
         && \
     dnf config-manager --set-enabled crb \
         && \
-    dnf install -y epel-release \
+    dnf install -y --setopt=install_weak_deps=False epel-release \
         && \
     dnf update -y \
         && \
-    dnf install -y \
+    dnf install -y --setopt=install_weak_deps=False \
         vim \
         sudo \
         rpm-build \
@@ -19,6 +17,7 @@ RUN dnf groupinstall -y "Development Tools" \
         gcc \
         gcc-c++ \
         clang \
+        compiler-rt \
         cmake \
         ninja-build \
         make \

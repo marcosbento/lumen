@@ -29,10 +29,10 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         python3-devel \
         python3-pip \
         python3-pytest \
-        qt5-devel \
         qt5-qtbase-devel \
         qt5-qtbase-gui \
         qt5-qtsvg-devel \
+        qt5-qtcharts-devel \
         boost-devel \
         boost-static \
         && \

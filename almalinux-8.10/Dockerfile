@@ -22,7 +22,6 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         compiler-rt \
         gdb \
         cmake3 \
-        ninja-build \
         make \
         openssl-devel \
         zlib-devel \
@@ -47,6 +46,12 @@ RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
     rm /tmp/install_cmake.sh
 ENV PATH="/opt/cmake/bin:${PATH}"
+
+# Install latest Ninja at /usr/local (the distro version is too old for CMake 4)
+COPY scripts/install_ninja.sh /tmp/install_ninja.sh
+RUN chmod +x /tmp/install_ninja.sh && \
+    /tmp/install_ninja.sh && \
+    rm /tmp/install_ninja.sh
 
 # Install pybind11
 COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh

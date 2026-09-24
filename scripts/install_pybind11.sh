@@ -12,7 +12,7 @@ git clone --branch v${PYBIND11_VERSION} --depth 1 ${PYBIND11_GITHUB_URL} /tmp/py
 
 ## Build and install pybind11
 pushd /tmp/pybind11-${PYBIND11_VERSION}
-cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF -DPYBIND11_TEST=OFF
 cmake --build build --target all -- -j$(nproc)
 cmake --build build --target install
 popd

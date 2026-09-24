@@ -12,6 +12,7 @@ RUN zypper refresh \
         make \
         git \
         libboost_date_time-devel \
+        libboost_filesystem-devel \
         libboost_process-devel \
         libboost_program_options-devel \
         libboost_test-devel \

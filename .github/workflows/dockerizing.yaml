@@ -19,35 +19,51 @@ jobs:
 
     outputs:
       timestamp: ${{ steps.timestamp.outputs.timestamp }}
+      images: ${{ steps.images.outputs.images }}
 
     steps:
       - name: Collect timestamp
         id: timestamp
         run: echo "timestamp=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_OUTPUT
 
+      - name: List images
+        id: images
+        run: |
+          images='[
+            "0dev",
+            "almalinux-8.10",
+            "almalinux-9.8",
+            "almalinux-10.2",
+            "alpine-3.24",
+            "arch-20260923",
+            "debian-12.15",
+            "debian-13.7",
+            "fedora-44",
+            "opensuse-tumbleweed",
+            "ubuntu-22.04",
+            "ubuntu-24.04",
+            "ubuntu-26.04"
+          ]'
+          echo "images=$(echo "$images" | jq -c .)" >> "$GITHUB_OUTPUT"
+
+  # Build each image on a native runner per architecture, and push it by digest (i.e. untagged)
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
 
     needs: bootstrap
 
     strategy:
-      max-parallel: 4
+      max-parallel: 8
       fail-fast: false
       matrix:
-        image:
-          - 0dev
-          - almalinux-8.10
-          - almalinux-9.8
-          - almalinux-10.2
-          - alpine-3.24
-          - arch-20260923
-          - debian-12.15
-          - debian-13.7
-          - fedora-44
-          - opensuse-tumbleweed
-          - ubuntu-22.04
-          - ubuntu-24.04
-          - ubuntu-26.04
+        image: ${{ fromJSON(needs.bootstrap.outputs.images) }}
+        arch:
+          - amd64
+          - arm64
+        exclude:
+          # Arch Linux only publishes amd64 base images
+          - image: arch-20260923
+            arch: arm64
 
     steps:
       - name: Login to Docker Hub
@@ -59,25 +75,89 @@ jobs:
       - name: Print matrix parameters
         run: |
           echo "Image: ${{ matrix.image }}"
+          echo "Architecture: ${{ matrix.arch }}"
           echo "Timestamp: ${{ needs.bootstrap.outputs.timestamp }}"
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image by digest
+        id: build
         uses: docker/build-push-action@v6
         with:
           file: ./${{ matrix.image }}/Dockerfile
-          # Arch Linux only publishes amd64 base images
-          platforms: ${{ startsWith(matrix.image, 'arch-') && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
-          push: true
-          tags: |
-            ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}_${{ needs.bootstrap.outputs.timestamp }}
-            ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}
+          platforms: linux/${{ matrix.arch }}
+          outputs: type=image,name=${{ vars.DOCKERHUB_USERNAME }}/lumen,push-by-digest=true,name-canonical=true,push=true
           labels: |
             org.opencontainers.image.source=${{ github.repositoryUrl }}
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.created=${{ needs.bootstrap.outputs.timestamp }}
+
+      - name: Export digest
+        run: |
+          mkdir -p ${{ runner.temp }}/digests
+          digest="${{ steps.build.outputs.digest }}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ matrix.image }}-${{ matrix.arch }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  # Combine the per-architecture digests of each image into a tagged multi-platform image
+  merge:
+    runs-on: ubuntu-latest
+
+    needs:
+      - bootstrap
+      - build
+
+    # Run even if some builds failed, so one broken image does not block publishing the others
+    if: ${{ !cancelled() }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.bootstrap.outputs.images) }}
+
+    steps:
+      - name: Download digests
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-${{ matrix.image }}-*
+          merge-multiple: true
+
+      - name: Check all architectures were built
+        run: |
+          # Arch Linux only publishes amd64 base images
+          expected=${{ startsWith(matrix.image, 'arch-') && 1 || 2 }}
+          found=$(find "${{ runner.temp }}/digests" -type f 2>/dev/null | wc -l)
+          echo "Found ${found} of ${expected} digests for ${{ matrix.image }}"
+          if [ "${found}" -ne "${expected}" ]; then
+            echo "::error::Not publishing ${{ matrix.image }}, as not all architectures were built"
+            exit 1
+          fi
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Create and push tagged manifest list
+        working-directory: ${{ runner.temp }}/digests
+        run: |
+          docker buildx imagetools create \
+            -t ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}_${{ needs.bootstrap.outputs.timestamp }} \
+            -t ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }} \
+            $(printf '${{ vars.DOCKERHUB_USERNAME }}/lumen@sha256:%s ' *)
+
+      - name: Inspect image
+        run: docker buildx imagetools inspect ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}

@@ -6,6 +6,7 @@ RUN apk update \
         bash \
         curl \
         vim \
+        file \
         cmake \
         clang \
         gdb \

@@ -2,6 +2,7 @@ FROM --platform=linux/amd64 archlinux/archlinux:base-20260923.0.598716
 
 RUN pacman -Suy --noconfirm \
         vim \
+        file \
         clang \
         gdb \
         gcc \

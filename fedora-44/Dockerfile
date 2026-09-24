@@ -4,6 +4,7 @@ RUN dnf update -y \
         && \
     dnf install -y --setopt=install_weak_deps=False \
         vim \
+        file \
         sudo \
         rpm-build \
         wget \

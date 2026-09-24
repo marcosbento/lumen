@@ -10,6 +10,7 @@ RUN apt-get update -y \
             sudo \
             ca-certificates \
             vim \
+            file \
             wget \
             curl \
             iputils-ping \

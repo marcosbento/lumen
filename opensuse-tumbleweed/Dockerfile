@@ -4,6 +4,7 @@ RUN zypper refresh \
     && zypper update -y \
     && zypper install -y \
         vim \
+        file \
         clang \
         gdb \
         gcc \

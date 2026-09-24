@@ -71,7 +71,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: ./${{ matrix.image }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          # Arch Linux only publishes amd64 base images
+          platforms: ${{ startsWith(matrix.image, 'arch-') && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
           push: true
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/lumen:${{ matrix.image }}_${{ needs.bootstrap.outputs.timestamp }}

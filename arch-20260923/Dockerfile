@@ -5,7 +5,6 @@ RUN pacman -Suy --noconfirm \
         clang \
         gdb \
         gcc \
-        cmake \
         ninja \
         make \
         git \

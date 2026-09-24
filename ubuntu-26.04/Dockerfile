@@ -16,7 +16,6 @@ RUN apt-get update && \
         clang \
         clang-format \
         gdb \
-        cmake \
         ninja-build \
         libssl-dev \
         zlib1g-dev \

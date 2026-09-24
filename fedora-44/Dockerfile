@@ -34,6 +34,7 @@ RUN dnf update -y \
     && dnf clean all
 
 # Install latest CMake at /opt/cmake
+# (distro CMake is kept on purpose, as the Qt devel packages require it)
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

@@ -7,6 +7,7 @@ RUN apt-get update && \
         ca-certificates \
         vim \
         file \
+        procps \
         sudo \
         wget \
         curl \

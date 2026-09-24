@@ -7,6 +7,7 @@ RUN apk upgrade --no-cache \
         curl \
         vim \
         file \
+        procps-ng \
         cmake \
         clang \
         gdb \

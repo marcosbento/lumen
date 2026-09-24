@@ -11,6 +11,7 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
     dnf install -y --setopt=install_weak_deps=False \
         vim \
         file \
+        procps-ng \
         sudo \
         rpm-build \
         curl \

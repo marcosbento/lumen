@@ -5,6 +5,7 @@ RUN zypper refresh \
     && zypper install -y \
         vim \
         file \
+        procps \
         clang \
         gdb \
         gcc \

@@ -11,6 +11,7 @@ RUN apt-get update -y \
             ca-certificates \
             vim \
             file \
+            procps \
             wget \
             curl \
             iputils-ping \

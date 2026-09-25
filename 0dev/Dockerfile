@@ -75,4 +75,3 @@ USER $USER
 WORKDIR /home/$USER
 
 CMD ["/bin/bash"]
-

@@ -2,6 +2,14 @@ FROM debian:11.11-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Bullseye LTS has ended, and its live security index references packages that are no longer available.
+# Use the final pre-EOL snapshot to keep package installation reproducible.
+RUN printf '%s\n' \
+        'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20260824T000000Z bullseye main' \
+        'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20260824T000000Z bullseye-security main' \
+        'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20260824T000000Z bullseye-updates main' \
+        > /etc/apt/sources.list
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \

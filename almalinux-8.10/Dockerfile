@@ -17,6 +17,7 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         curl \
         wget \
         git \
+        pkgconf-pkg-config \
         gcc \
         gcc-c++ \
         clang \
@@ -25,6 +26,7 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         cmake3 \
         make \
         openssl-devel \
+        libcurl-devel \
         zlib-devel \
         libxcrypt-devel \
         python3.12 \
@@ -59,6 +61,12 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
+
+# Install aviso-client
+COPY scripts/install_aviso_client.sh /tmp/install_aviso_client.sh
+RUN chmod +x /tmp/install_aviso_client.sh && \
+    /tmp/install_aviso_client.sh && \
+    rm /tmp/install_aviso_client.sh
 
 # Set up a non-root user
 ARG USER=devuser

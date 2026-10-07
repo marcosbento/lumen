@@ -14,6 +14,7 @@ RUN apt-get update && \
         iputils-ping \
         \
         build-essential \
+        pkg-config \
         git \
         gcc \
         g++ \
@@ -54,6 +55,12 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
+
+# Install aviso-client
+COPY scripts/install_aviso_client.sh /tmp/install_aviso_client.sh
+RUN chmod +x /tmp/install_aviso_client.sh && \
+    /tmp/install_aviso_client.sh && \
+    rm /tmp/install_aviso_client.sh
  
 # Set up a non-root user
 ARG USER=devuser

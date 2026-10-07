@@ -12,6 +12,7 @@ RUN zypper refresh \
         ninja \
         make \
         git \
+        pkgconf-pkg-config \
         libboost_date_time-devel \
         libboost_filesystem-devel \
         libboost_process-devel \
@@ -43,6 +44,12 @@ COPY scripts/install_pybind11.sh /tmp/install_pybind11.sh
 RUN chmod +x /tmp/install_pybind11.sh && \
     /tmp/install_pybind11.sh && \
     rm /tmp/install_pybind11.sh
+
+# Install aviso-client
+COPY scripts/install_aviso_client.sh /tmp/install_aviso_client.sh
+RUN chmod +x /tmp/install_aviso_client.sh && \
+    /tmp/install_aviso_client.sh && \
+    rm /tmp/install_aviso_client.sh
 
 # Set up a non-root user
 ARG USER=devuser

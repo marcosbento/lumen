@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Download and install latest aviso-client
-AVISO_CLIENT_VERSION=2.4.2
+AVISO_CLIENT_VERSION=2.4.3
 AVISO_CLIENT_GITHUB_URL=https://github.com/ecmwf/aviso-client.git
 
 # Keep the Rust toolchain, tools, caches and build artifacts temporary

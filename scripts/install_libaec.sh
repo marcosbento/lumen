@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Download and install latest libaec
-LIBAEC_VERSION=1.1.6
+LIBAEC_VERSION=1.1.8
 LIBAEC_REPO_URL=https://gitlab.dkrz.de/dkrz-sw/libaec.git
 
 # Download libaec, using git clone to get the full repository and avoid issues with tarball downloads

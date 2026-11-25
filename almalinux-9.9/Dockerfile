@@ -1,34 +1,49 @@
-FROM --platform=linux/amd64 archlinux/archlinux:base-20260923.0.598716
+FROM almalinux:9.9-20261116
 
-RUN pacman -Suy --noconfirm \
+RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
+        && \
+    dnf config-manager --set-enabled crb \
+        && \
+    dnf install -y --setopt=install_weak_deps=False epel-release \
+        && \
+    dnf update -y \
+        && \
+    dnf install -y --setopt=install_weak_deps=False \
         vim \
         file \
         procps-ng \
-        clang \
-        gdb \
-        gcc \
-        ninja \
-        make \
-        git \
-        curl \
-        pkgconf \
-        openssl \
-        zlib \
-        boost \
-        boost-libs \
-        qt6-base \
-        qt6-svg \
-        qt6-5compat \
-        qt6-charts \
-        python3 \
-        python-pytest \
-        which \
         sudo \
+        rpm-build \
         wget \
-        inetutils \
-    && yes | pacman -Scc
+        curl-minimal \
+        git \
+        pkgconf-pkg-config \
+        gcc \
+        gcc-c++ \
+        clang \
+        compiler-rt \
+        gdb \
+        cmake \
+        ninja-build \
+        make \
+        openssl-devel \
+        zlib-devel \
+        libxcrypt-devel \
+        python3 \
+        python3-devel \
+        python3-pip \
+        python3-pytest \
+        qt5-qtbase-devel \
+        qt5-qtbase-gui \
+        qt5-qtsvg-devel \
+        qt5-qtcharts-devel \
+        boost-devel \
+        boost-static \
+        && \
+    dnf clean all
 
 # Install latest CMake at /opt/cmake
+# (distro CMake is kept on purpose, as the Qt devel packages require it)
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

@@ -1,50 +1,49 @@
-FROM almalinux:10.2-20260902
+FROM debian:13.8-slim
 
-RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
-        && \
-    dnf config-manager --set-enabled crb \
-        && \
-    dnf install -y --setopt=install_weak_deps=False epel-release \
-        && \
-    dnf update -y \
-        && \
-    dnf install -y --setopt=install_weak_deps=False \
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ca-certificates \
         vim \
         file \
+        procps \
         sudo \
-        rpm-build \
         wget \
         curl \
-        procps-ng \
+        iputils-ping \
+        \
+        build-essential \
+        pkg-config \
         git \
-        pkgconf-pkg-config \
         gcc \
-        gcc-c++ \
+        g++ \
         clang \
-        compiler-rt \
+        clang-format \
         gdb \
-        cmake \
         ninja-build \
-        make \
-        openssl-devel \
-        zlib-devel \
-        libxcrypt-devel \
+        libssl-dev \
+        zlib1g-dev \
+        libcrypt-dev \
         python3 \
-        python3-devel \
+        python3-dev \
         python3-pip \
         python3-pytest \
-        qt6-qtbase-devel \
-        qt6-qtbase-gui \
-        qt6-qtsvg-devel \
-        qt6-qtcharts-devel \
-        qt6-qt5compat-devel \
-        boost-devel \
-        boost-static \
-        && \
-    dnf clean all
+        python3-sphinx \
+        qt6-base-dev \
+        qt6-svg-dev \
+        qt6-charts-dev \
+        qt6-5compat-dev \
+        libboost-dev \
+        libboost-system-dev \
+        libboost-timer-dev \
+        libboost-chrono-dev \
+        libboost-program-options-dev \
+        libboost-date-time-dev \
+        libboost-test-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install latest CMake at /opt/cmake
-# (distro CMake is kept on purpose, as the Qt devel packages require it)
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
@@ -62,7 +61,7 @@ COPY scripts/install_aviso_client.sh /tmp/install_aviso_client.sh
 RUN chmod +x /tmp/install_aviso_client.sh && \
     /tmp/install_aviso_client.sh && \
     rm /tmp/install_aviso_client.sh
-
+ 
 # Set up a non-root user
 ARG USER=devuser
 ARG UID=1000

@@ -1,4 +1,4 @@
-FROM almalinux:8.10-20260902
+FROM almalinux:8.10-20261114
 
 RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
         && \

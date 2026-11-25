@@ -1,49 +1,43 @@
-FROM debian:13.7-slim
+FROM fedora:45
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        ca-certificates \
+RUN dnf update -y \
+        && \
+    dnf install -y --setopt=install_weak_deps=False \
         vim \
         file \
-        procps \
         sudo \
+        rpm-build \
         wget \
         curl \
-        iputils-ping \
+        iputils \
+        procps-ng \
         \
-        build-essential \
-        pkg-config \
         git \
+        pkgconf-pkg-config \
         gcc \
-        g++ \
+        gcc-c++ \
         clang \
-        clang-format \
+        compiler-rt \
         gdb \
         ninja-build \
-        libssl-dev \
-        zlib1g-dev \
-        libcrypt-dev \
+        make \
+        openssl-devel \
+        zlib-devel \
+        libxcrypt-devel \
         python3 \
-        python3-dev \
+        python3-devel \
         python3-pip \
         python3-pytest \
-        python3-sphinx \
-        qt6-base-dev \
-        qt6-svg-dev \
-        qt6-charts-dev \
-        qt6-5compat-dev \
-        libboost-dev \
-        libboost-system-dev \
-        libboost-timer-dev \
-        libboost-chrono-dev \
-        libboost-program-options-dev \
-        libboost-date-time-dev \
-        libboost-test-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+        qt5-qtbase-devel \
+        qt5-qtbase-gui \
+        qt5-qtsvg-devel \
+        qt5-qtcharts-devel \
+        boost-devel \
+        boost-static \
+    && dnf clean all
 
 # Install latest CMake at /opt/cmake
+# (distro CMake is kept on purpose, as the Qt devel packages require it)
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \
@@ -61,7 +55,7 @@ COPY scripts/install_aviso_client.sh /tmp/install_aviso_client.sh
 RUN chmod +x /tmp/install_aviso_client.sh && \
     /tmp/install_aviso_client.sh && \
     rm /tmp/install_aviso_client.sh
- 
+
 # Set up a non-root user
 ARG USER=devuser
 ARG UID=1000

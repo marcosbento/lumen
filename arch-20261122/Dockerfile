@@ -1,43 +1,34 @@
-FROM fedora:44
+FROM --platform=linux/amd64 archlinux/archlinux:base-20261122.0.629676
 
-RUN dnf update -y \
-        && \
-    dnf install -y --setopt=install_weak_deps=False \
+RUN pacman -Suy --noconfirm \
         vim \
         file \
-        sudo \
-        rpm-build \
-        wget \
-        curl \
-        iputils \
         procps-ng \
-        \
-        git \
-        pkgconf-pkg-config \
-        gcc \
-        gcc-c++ \
         clang \
-        compiler-rt \
         gdb \
-        ninja-build \
+        gcc \
+        ninja \
         make \
-        openssl-devel \
-        zlib-devel \
-        libxcrypt-devel \
+        git \
+        curl \
+        pkgconf \
+        openssl \
+        zlib \
+        boost \
+        boost-libs \
+        qt6-base \
+        qt6-svg \
+        qt6-5compat \
+        qt6-charts \
         python3 \
-        python3-devel \
-        python3-pip \
-        python3-pytest \
-        qt5-qtbase-devel \
-        qt5-qtbase-gui \
-        qt5-qtsvg-devel \
-        qt5-qtcharts-devel \
-        boost-devel \
-        boost-static \
-    && dnf clean all
+        python-pytest \
+        which \
+        sudo \
+        wget \
+        inetutils \
+    && yes | pacman -Scc
 
 # Install latest CMake at /opt/cmake
-# (distro CMake is kept on purpose, as the Qt devel packages require it)
 COPY scripts/install_cmake.sh /tmp/install_cmake.sh
 RUN chmod +x /tmp/install_cmake.sh && \
     /tmp/install_cmake.sh && \

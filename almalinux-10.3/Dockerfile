@@ -1,4 +1,4 @@
-FROM almalinux:9.8-20260902
+FROM almalinux:10.3-20261116
 
 RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)' \
         && \
@@ -11,11 +11,11 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
     dnf install -y --setopt=install_weak_deps=False \
         vim \
         file \
-        procps-ng \
         sudo \
         rpm-build \
         wget \
-        curl-minimal \
+        curl \
+        procps-ng \
         git \
         pkgconf-pkg-config \
         gcc \
@@ -33,10 +33,11 @@ RUN dnf install -y --setopt=install_weak_deps=False 'dnf-command(config-manager)
         python3-devel \
         python3-pip \
         python3-pytest \
-        qt5-qtbase-devel \
-        qt5-qtbase-gui \
-        qt5-qtsvg-devel \
-        qt5-qtcharts-devel \
+        qt6-qtbase-devel \
+        qt6-qtbase-gui \
+        qt6-qtsvg-devel \
+        qt6-qtcharts-devel \
+        qt6-qt5compat-devel \
         boost-devel \
         boost-static \
         && \

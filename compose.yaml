@@ -18,11 +18,11 @@ services:
     profiles:
       - development
 
-  arch-20260923:
+  arch-20261122:
     build: 
       context: ./
-      dockerfile: ./arch-20260923/Dockerfile
-    image: marcosbento/lumen:arch-20260923
+      dockerfile: ./arch-20261122/Dockerfile
+    image: marcosbento/lumen:arch-20261122
     profiles:
       - development
 
@@ -42,19 +42,19 @@ services:
     profiles:
       - development
 
-  debian-13.7:
+  debian-13.8:
     build: 
       context: ./
-      dockerfile: ./debian-13.7/Dockerfile
-    image: marcosbento/lumen:debian-13.7
+      dockerfile: ./debian-13.8/Dockerfile
+    image: marcosbento/lumen:debian-13.8
     profiles:
       - development
 
-  fedora-44:
+  fedora-45:
     build: 
       context: ./
-      dockerfile: ./fedora-44/Dockerfile
-    image: marcosbento/lumen:fedora-44
+      dockerfile: ./fedora-45/Dockerfile
+    image: marcosbento/lumen:fedora-45
     profiles:
       - development
 
@@ -66,19 +66,19 @@ services:
     profiles:
       - development
   
-  almalinux-9.8:
+  almalinux-9.9:
     build: 
       context: ./
-      dockerfile: ./almalinux-9.8/Dockerfile
-    image: marcosbento/lumen:almalinux-9.8
+      dockerfile: ./almalinux-9.9/Dockerfile
+    image: marcosbento/lumen:almalinux-9.9
     profiles:
       - development
   
-  almalinux-10.2:
+  almalinux-10.3:
     build: 
       context: ./
-      dockerfile: ./almalinux-10.2/Dockerfile
-    image: marcosbento/lumen:almalinux-10.2
+      dockerfile: ./almalinux-10.3/Dockerfile
+    image: marcosbento/lumen:almalinux-10.3
     profiles:
       - development
 
